@@ -7,10 +7,12 @@ validAlphaNum()
   # Validate arg: returns 0 if all upper+lower+digits, 1 otherwise.
   # Remove all unacceptable chars.
   validchars="$(echo $1 | sed -e 's/[^[:alnum:]]//g')"
-
+echo $validchars $1
   if [ "$validchars" = "$1" ] ; then
+	  echo "same."
     return 0
   else
+	  echo "diff."
     return 1
   fi
 }
@@ -18,15 +20,15 @@ validAlphaNum()
 # BEGIN MAIN SCRIPT-–DELETE EVERYTHING BELOW THIS LINE IF YOU
 #   WANT TO INCLUDE THIS IN OTHER SCRIPTS.
 # =================
-#/bin/echo -n "Enter input: "
-#read input
+/bin/echo -n "Enter input: "
+read input
 
 # Input validation
-#if ! validAlphaNum "$input" ; then
-#  echo "Your input must consist of only letters and numbers." >&2
-#  exit 1
-#else
-#  echo "Input is valid."
-#fi
+if ! validAlphaNum "$input" ; then
+  echo "Your input must consist of only letters and numbers." >&2
+  exit 1
+else
+  echo "Input is valid."
+fi
 
-#exit 0
+exit 0
